@@ -16,7 +16,11 @@ resumesRouter.get('/', resumesController.getResumes);
 resumesRouter.get('/:id', resumesController.getResumeById);
 
 // 이력서 수정
-resumesRouter.put('/:id', updateResumeValidator, resumesController.updateResume);
+resumesRouter.put(
+  '/:id',
+  updateResumeValidator,
+  resumesController.updateResume,
+);
 
 // 이력서 삭제
 resumesRouter.delete('/:id', resumesController.deleteResume);
