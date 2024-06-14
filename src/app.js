@@ -1,12 +1,14 @@
-require('dotenv').config();
-const express = require('express');
+import dotenv from 'dotenv';
+dotenv.config();
+
+import express from 'express';
 import { SERVER_PORT } from './constants/env.constant.js';
 import { errorHandler } from './middlewares/error-handler.middleware.js';
 import { HTTP_STATUS } from './constants/http-status.constant.js';
 import { apiRouter } from './routers/index.js';
 
 const app = express();
-const port = process.env.SERVER_PORT || 3000;
+const port = SERVER_PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -19,6 +21,6 @@ app.use('/api', apiRouter);
 
 app.use(errorHandler);
 
-app.listen(SERVER_PORT, () => {
-  console.log(`서버가 ${SERVER_PORT}번 포트에서 실행 중입니다.`);
+app.listen(port, () => {
+  console.log(`서버가 ${port}번 포트에서 실행 중입니다.`);
 });
